@@ -5,14 +5,14 @@ use gettextrs::*;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let hellorust = "hellorust";
-    TextDomain::new(hellorust)
+    let _ = TextDomain::new(hellorust)
         // .mo file will be placed in ./locale/de/LC_MESSAGES/hellorust.mo
         // IMPORTANT: Specify the directory containing the `locale` directory,
         // not the path to the `locale` directory.
         .prepend(".")
         // Ask gettext for UTF-8 strings. THIS CRATE CAN'T HANDLE NON-UTF-8 DATA!
         .codeset("UTF-8")
-        .init()?;
+        .init();
 
     // `gettext()` simultaneously marks a string for translation and translates
     // it at runtime.

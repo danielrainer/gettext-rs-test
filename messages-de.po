@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-18 23:05+0000\n"
+"POT-Creation-Date: 2025-04-20 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,24 +20,32 @@ msgstr ""
 
 #. `gettext()` simultaneously marks a string for translation and translates
 #. it at runtime.
-#: src/main.rs:19
+#: src/main.rs:26
 msgid "Hello, world!"
 msgstr "Hallo, Welt!"
 
-#: src/main.rs:24 src/main.rs:25
+#: src/main.rs:31 src/main.rs:32
 msgid "One thing"
 msgid_plural "Multiple things"
 msgstr[0] "Ein Ding"
 msgstr[1] "Mehrere Dinge"
 
-#: src/main.rs:33
+#: src/main.rs:40
 msgctxt "This is the context"
 msgid "Hello, world!"
 msgstr "Hallo, Welt!"
 
-#: src/main.rs:37
+#: src/main.rs:44
 msgctxt "This is the context"
 msgid "One thing"
 msgid_plural "Multiple things"
 msgstr[0] "Ein Ding"
 msgstr[1] "Mehrere Dinge"
+
+#: src/main.rs:47
+msgid "Here is a number: {}"
+msgstr "Hier ist eine Zahl: {}"
+
+#: src/main.rs:50
+msgid "zero: {}, one: {}"
+msgstr "eins: {1}, null: {0}"

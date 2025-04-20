@@ -1,7 +1,14 @@
 // Adapted from the example code of the gettext-rs crate
 // https://docs.rs/gettext-rs/latest/gettextrs/index.html
 
+use formatx::formatx;
 use gettextrs::*;
+
+macro_rules! gettext_fmt {
+    ($string:expr, $($args:expr),+ $(,)?) => {
+        formatx!(gettext($string), $($args), +).unwrap()
+    };
+}
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let hellorust = "hellorust";
@@ -36,6 +43,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "Plural with context: {}",
         npgettext("This is the context", "One thing", "Multiple things", 2)
     );
+
+    let formatx_str = formatx!(gettext("Here is a number: {}"), 42).unwrap();
+    println!("{formatx_str}");
+
+    let order_switch = formatx!(gettext("zero: {}, one: {}"), 0, 1).unwrap();
+    println!("{order_switch}");
+
+    // This does not make it into the po files.
+    let macro_text = gettext_fmt!("format through macro {}", 123);
+    println!("{macro_text}");
 
     Ok(())
 }

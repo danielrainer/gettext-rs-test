@@ -4,9 +4,10 @@
 use formatx::formatx;
 use gettextrs::*;
 
+// The name must be specified to xgettext via `-kgettext_fmt!`.
 macro_rules! gettext_fmt {
-    ($string:expr, $($args:expr),+ $(,)?) => {
-        formatx!(gettext($string), $($args), +).unwrap()
+    ($string:expr $(, $args:expr)* $(,)?) => {
+        formatx!(gettextrs::gettext($string) $(, $args)*).unwrap()
     };
 }
 
@@ -50,7 +51,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let order_switch = formatx!(gettext("zero: {}, one: {}"), 0, 1).unwrap();
     println!("{order_switch}");
 
-    // This does not make it into the po files.
+    let simple = gettext_fmt!("text without placeholder");
+    println!("{simple}");
+
     let macro_text = gettext_fmt!("format through macro {}", 123);
     println!("{macro_text}");
 

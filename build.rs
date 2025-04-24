@@ -1,11 +1,10 @@
 use std::process::Command;
 
 fn main() {
-    Command::new("cargo")
-        .args(["install", "xtr"])
+    Command::new("xgettext")
+        .args(["-kgettext_fmt!", "src/main.rs"])
         .status()
         .unwrap();
-    Command::new("xtr").args(["src/main.rs"]).status().unwrap();
     Command::new("msgmerge")
         .args([
             "--update",
